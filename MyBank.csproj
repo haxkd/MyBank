@@ -67,11 +67,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AddBranch.aspx" />
+    <Content Include="Admin\AddManager.aspx" />
+    <Content Include="Admin\Branch.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\Manager.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddBranch.aspx.cs">
+      <DependentUpon>AddBranch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddBranch.aspx.designer.cs">
+      <DependentUpon>AddBranch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddManager.aspx.cs">
+      <DependentUpon>AddManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddManager.aspx.designer.cs">
+      <DependentUpon>AddManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AdminLogic.cs" />
     <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -79,6 +97,13 @@
     </Compile>
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Branch.aspx.cs">
+      <DependentUpon>Branch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Branch.aspx.designer.cs">
+      <DependentUpon>Branch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -93,6 +118,13 @@
     </Compile>
     <Compile Include="Admin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manager.aspx.cs">
+      <DependentUpon>Manager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manager.aspx.designer.cs">
+      <DependentUpon>Manager.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,6 +4,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Configuration;
+using System.Data.Common;
+using System.Net;
+using System.Xml.Linq;
+using System.Data;
 
 namespace MyBank.Admin
 {
@@ -24,5 +28,51 @@ namespace MyBank.Admin
             connection.Close();
             return false;
         }
+
+        public static int addBranch(string name, string code,string address)
+        {
+            connection.Open();
+            string query = $"INSERT INTO Branch(name,code,address) VALUES ('{name}','{code}','{address}') ";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            var x = cmd.ExecuteNonQuery();
+            connection.Close();
+            return x;
+        }
+
+        public static DataTable GetBranches()
+        {
+            connection.Open();
+            string query = $"SELECT * FROM Branch";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlDataAdapter dr = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            dr.Fill(dt);
+            connection.Close();
+            return dt;
+        }
+
+        public static int addManager(string name, string branchid)
+        {
+            connection.Open();
+            string query = $"INSERT INTO Manager(name,branchid) VALUES ('{name}','{branchid}') ";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            var x = cmd.ExecuteNonQuery();
+            connection.Close();
+            return x;
+        }
+        public static DataTable GetManagers()
+        {
+            connection.Open();
+            string query = $"SELECT * FROM Manager";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlDataAdapter dr = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            dr.Fill(dt);
+            connection.Close();
+            return dt;
+        }
+
+
+
     }
 }
