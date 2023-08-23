@@ -12,6 +12,7 @@
                     <asp:Label ID="lblname" runat="server" Text='<%# Bind("name") %>'></asp:Label>
                 </ItemTemplate>
                 <EditItemTemplate>
+
                 </EditItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Branch Code">

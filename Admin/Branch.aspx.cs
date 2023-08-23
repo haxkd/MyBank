@@ -12,6 +12,14 @@ namespace MyBank.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                getBranches();
+            }
+        }
+
+        public void getBranches()
+        {
             DataTable tbl = AdminLogic.GetBranches();
             branches.DataSource = tbl;
             branches.DataBind();
