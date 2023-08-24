@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="MyBank.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
     
     <h1 class="text-center mt-5">Register User</h1>
 
@@ -34,8 +33,6 @@
             <label for="code" class="form-label">Branch Code</label>
             <asp:DropDownList ID="branches" runat="server" class="form-select"></asp:DropDownList>
         </div>
-
-
          
         <asp:Button ID="btn" runat="server" Text="Register" class="btn btn-primary" OnClick="btn_Click" />
     </div>

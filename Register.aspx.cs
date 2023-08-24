@@ -1,4 +1,5 @@
-﻿using MyBank.Admin;
+﻿using MyBank;
+using MyBank.Admin;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -35,9 +36,7 @@ namespace MyBank
             var ad = address.Value;
             var branch = branches.SelectedValue;
 
-
-
-            if (UserLogic.checkCustomer(em))
+            if (UserLogic.checkCustomer(em).Rows.Count!=0)
             {
                 Response.Write("<script>alert('customer already exist....!')</script>");
                 return;
