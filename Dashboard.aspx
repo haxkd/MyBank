@@ -5,5 +5,4 @@
     
     <h1>Welcome <b><% Response.Write(UserLogic.getCutsomer(Session["UserId"].ToString()).Rows[0]["name"].ToString()); %></b> to Dashboard....!</h1>
 
-
 </asp:Content>

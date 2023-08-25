@@ -72,6 +72,26 @@ namespace MyBank.Admin
             return dt;
         }
 
+        public static DataTable GetManager(string id)
+        {
+            connection.Open();
+            string query = $"SELECT * FROM Manager WHERE id='{id}'";
+            SqlDataAdapter dr = new SqlDataAdapter(query, connection);
+            DataTable table = new DataTable();
+            dr.Fill(table);
+            connection.Close();
+            return table;
+        }
+
+        public static void updateManager(string id,string name, string branchid)
+        {
+            connection.Open();
+            string query = $"UPDATE Manager SET name='{name}',branchid='{branchid}' WHERE id='{id}'";
+            SqlCommand cmd = new SqlCommand (query, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
 
 
     }
