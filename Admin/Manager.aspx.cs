@@ -35,10 +35,18 @@ namespace MyBank.Admin
 
         protected void managers_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            
 
             string id = managers.DataKeys[e.RowIndex].Values["id"].ToString();
             string name = (managers.Rows[e.RowIndex].FindControl("txtname") as TextBox).Text;
             string branchid = (managers.Rows[e.RowIndex].FindControl("branches") as DropDownList).SelectedValue;
+
+            if (AdminLogic.selectBranch(branchid).Rows.Count != 0)
+            {
+                Response.Write("<script>alert('branch already assigned....!')</script>");
+                return;
+            }
+
             AdminLogic.updateManager(id,name,branchid);
             managers.EditIndex = -1;
             showData();

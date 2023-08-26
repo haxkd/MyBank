@@ -30,12 +30,17 @@ namespace MyBank.Admin
            
             string branchid = branches.SelectedValue;
 
+            if (AdminLogic.selectBranch(branchid).Rows.Count != 0)
+            {
+                Response.Write("<script>alert('branch already assigned....!')</script>");
+                return;
+            }
+
             int val = AdminLogic.addManager(nm, branchid);
 
             if (val > 0)
             {
                 Response.Write("<script>alert('successfuly manager added....!')</script>");
-
             }
             else
             {

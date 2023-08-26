@@ -93,6 +93,19 @@ namespace MyBank.Admin
         }
 
 
+        public static DataTable selectBranch(string branchid)
+        {
+            connection.Open();
+            string query = $"select * from Manager where branchid = '{branchid}'";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlDataAdapter dr = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            dr.Fill(dt);
+            connection.Close();
+            return dt;
+        }
+
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBank.Admin;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.UI;
+using System.Xml.Linq;
 
 namespace MyBank
 {
@@ -47,6 +49,16 @@ namespace MyBank
             dr.Fill(table);
             connection.Close();
             return table;
+        }
+
+        public static int depositeAmount(int Amount, int newAmount,string id) {
+            connection.Open();
+            string query = $"UPDATE Customer SET balance='{newAmount}' WHERE id='{id}';"
+                + $"INSERT INTO transactions(amount,toAccount,remark) VALUES('{Amount}','{id}','deposite')";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            int x = cmd.ExecuteNonQuery();
+            connection.Close();
+            return x;
         }
 
     }
