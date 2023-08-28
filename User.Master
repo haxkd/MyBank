@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.master.cs" Inherits="MyBank.User" %>
 
+
+
 <!DOCTYPE html>
 
 <html>
@@ -28,7 +30,12 @@
         </div>
     </nav>
     <form id="form1" runat="server">
+
+        <%@ Import Namespace="MyBank" %>
+
         <div>
+            <h1 class="text-center my-5"><% if (Session["UserId"] != null){ Response.Write("welcome <b>"+UserLogic.getCutsomer(Session["UserId"].ToString()).Rows[0]["name"]+"</b> to dashboard....!"); } %></h1>
+            
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

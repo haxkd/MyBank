@@ -78,7 +78,9 @@
     <Content Include="Deposite.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Transfer.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Withdraw.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AddBranch.aspx.cs">
@@ -166,6 +168,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Transfer.aspx.cs">
+      <DependentUpon>Transfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transfer.aspx.designer.cs">
+      <DependentUpon>Transfer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.Master.cs">
@@ -174,6 +183,13 @@
     </Compile>
     <Compile Include="User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Withdraw.aspx.cs">
+      <DependentUpon>Withdraw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Withdraw.aspx.designer.cs">
+      <DependentUpon>Withdraw.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

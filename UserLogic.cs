@@ -61,5 +61,29 @@ namespace MyBank
             return x;
         }
 
+        public static int withdrawAmount(int Amount, int newAmount, string id)
+        {
+            connection.Open();
+            string query = $"UPDATE Customer SET balance='{newAmount}' WHERE id='{id}';"
+                + $"INSERT INTO transactions(amount,fromAccount,remark) VALUES('{Amount}','{id}','withdraw')";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            int x = cmd.ExecuteNonQuery();
+            connection.Close();
+            return x;
+        }
+
+        public static int transferAmount(int Amount, int toAmount,int fromAmount,string toId, string fromId)
+        {
+            connection.Open();
+            string query = 
+                $"UPDATE Customer SET balance='{fromAmount}' WHERE id='{fromId}';"
+                +$"UPDATE Customer SET balance='{toAmount}' WHERE id='{toId}';"
+                + $"INSERT INTO transactions(amount,fromAccount,toAccount,remark) VALUES('{Amount}',{fromId},'{toId}','transfer')";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            int x = cmd.ExecuteNonQuery();
+            connection.Close();
+            return x;
+        }
+
     }
 }

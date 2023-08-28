@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Deposite.aspx.cs" Inherits="MyBank.Deposite" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Withdraw.aspx.cs" Inherits="MyBank.Withdraw" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+   
 
 
     <div class="container">
@@ -10,8 +9,10 @@
             <input type="number" class="form-control" id="amount" runat="server">
         </div>
 
-        <asp:Button ID="btn" runat="server" Text="Deposite" class="btn btn-primary" OnClick="btn_Click" />
+        <asp:Button ID="btn" runat="server" Text="Withdraw" class="btn btn-primary" OnClick="btn_Click"/>
     </div>
+
+
 
 
 </asp:Content>
