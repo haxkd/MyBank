@@ -21,19 +21,24 @@ namespace MyBank
 
         protected void btn_Click(object sender, EventArgs e)
         {
+            string UserId = Session["UserId"].ToString();
+
             string toAccountNo = accountNo.Value;
 
+            if (toAccountNo==UserId)
+            {
+                Response.Write("<script>alert('you cant transfer on your account....!')</script>");
+                return;
+            }
+
+
             if (UserLogic.getCutsomer(toAccountNo).Rows.Count == 0) {
-                Response.Write("<script>alert('invalid accpunt number....!')</script>");
+                Response.Write("<script>alert('invalid account number....!')</script>");
                 return;
             }
             
             DataRow toAccountRow = UserLogic.getCutsomer(toAccountNo).Rows[0];
 
-
-
-
-            string UserId = Session["UserId"].ToString();
             int transferAmount = int.Parse(amount.Value);
 
             DataRow user = UserLogic.getCutsomer(UserId).Rows[0];

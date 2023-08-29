@@ -85,5 +85,18 @@ namespace MyBank
             return x;
         }
 
+
+        public static DataTable getTransactions(string id)
+        {
+            DataTable table = new DataTable();
+            connection.Open();
+            string query = $"SELECT * FROM transactions WHERE fromAccount='{id}' or toAccount='{id}'";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlDataAdapter sqlData = new SqlDataAdapter(cmd);
+            sqlData.Fill(table);
+            connection.Close();
+            return table;
+        }
+
     }
 }

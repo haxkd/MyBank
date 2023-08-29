@@ -78,6 +78,7 @@
     <Content Include="Deposite.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Transactions.aspx" />
     <Content Include="Transfer.aspx" />
     <Content Include="Web.config" />
     <Content Include="Withdraw.aspx" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions.aspx.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Transactions.aspx.designer.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transfer.aspx.cs">
       <DependentUpon>Transfer.aspx</DependentUpon>
