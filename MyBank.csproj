@@ -77,6 +77,8 @@
     <Content Include="Default.aspx" />
     <Content Include="Deposite.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MyMail\Register copy.html" />
+    <Content Include="MyMail\Register.html" />
     <Content Include="Register.aspx" />
     <Content Include="Transactions.aspx" />
     <Content Include="Transfer.aspx" />
@@ -161,6 +163,9 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyMail\SendMails.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

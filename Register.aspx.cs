@@ -7,13 +7,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using MyBank.MyMail;
 namespace MyBank
 {
     public partial class Register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
                 DataTable dataTable = AdminLogic.GetBranches();
@@ -44,6 +45,9 @@ namespace MyBank
 
 
             int x = UserLogic.addCustomer(nm, ag, gn, em, ps, ad, branch);
+
+            //SendMails.registerMail()
+
             if (x > 0)
             {
                 Response.Write("<script>alert('customer registeration successfully....!')</script>");
