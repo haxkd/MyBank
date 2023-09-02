@@ -77,6 +77,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Deposite.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MyMail\login.html" />
     <Content Include="MyMail\Register copy.html" />
     <Content Include="MyMail\Register.html" />
     <Content Include="Register.aspx" />

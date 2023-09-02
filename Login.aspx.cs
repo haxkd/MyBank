@@ -1,4 +1,5 @@
 ﻿using MyBank;
+using MyBank.MyMail;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,14 +16,19 @@ namespace MyBank
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string userIpAddress = HttpContext.Current.Request.UserHostAddress;
         }
 
         protected void btn_Click(object sender, EventArgs e)
-        {            
+        {
+            
+
             var em = email.Value;
             var ps = password.Value;
             DataTable table = UserLogic.checkCustomer(em);
+
+            new SendMails().loginMail(em,"address");
+
             if (table.Rows.Count!=0)
             {
                 string pass = table.Rows[0]["password"].ToString();

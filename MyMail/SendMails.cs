@@ -47,5 +47,37 @@ namespace MyBank.MyMail
                 }
             }
         }
+
+        public void loginMail(string email, string address)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/MyMail/login.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+            
+            body = body.Replace("{email}", email);
+            body = body.Replace("{address}", address);
+            body = body.Replace("{openOn}", DateTime.Now.ToString());
+        
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress("haxkdmail@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = "Purchased Course Summary";
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                //mail.Attachments.Add(new Attachment("D:\\TestFile.txt"));//--Uncomment this to send any attachment  
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential("haxkdmail@gmail.com", "hjppnugyosmsvftk");
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+            }
+        }
+
+
     }
 }
