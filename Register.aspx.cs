@@ -43,20 +43,12 @@ namespace MyBank
                 return;
             }
 
+            int userid = UserLogic.addCustomer(nm, ag, gn, em, ps, ad, branch);
+            DataRow row = AdminLogic.getBranch(branch).Rows[0];
+            string branchData = $"{ row["code"]} | {row["name"]} | {row["address"]}";
 
-            int x = UserLogic.addCustomer(nm, ag, gn, em, ps, ad, branch);
-
-            //SendMails.registerMail()
-
-            if (x > 0)
-            {
-                Response.Write("<script>alert('customer registeration successfully....!')</script>");
-
-            }
-            else
-            {
-                Response.Write("<script>alert('customer registeration failed....!')</script>");
-            }
+            new SendMails().registerMail(userid.ToString(), nm, gn, em, ad, branchData);
+            Response.Write("<script>alert('customer registeration successfully....!')</script>");          
         }
     }
 }

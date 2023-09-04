@@ -21,9 +21,9 @@ namespace MyBank
             connection.Open();
             string date = DateTime.Now.ToString();
             string query = "INSERT INTO Customer(name,age,gender,email,password,address,branchid,balance,openOn,status,maxAmount,minAmount)" +
-                $"VALUES ('{name}','{age}','{gender}','{email}','{password}','{address}','{branchid}','0','{date}','active','10000','1000')";
+                $"output inserted.id VALUES ('{name}','{age}','{gender}','{email}','{password}','{address}','{branchid}','0','{date}','active','10000','1000')";
             SqlCommand cmd = new SqlCommand(query, connection);
-            int x = cmd.ExecuteNonQuery();
+            int x = (int)cmd.ExecuteScalar();
             connection.Close();
             return x;
         }
@@ -146,6 +146,16 @@ namespace MyBank
                 srno++;
             }
             return table;
+        }
+
+
+        public static void addloginRecord(string userid,string attempt,string ipaddress)
+        {
+            connection.Open();
+            string query = $"insert into loginRecord(UserId, attempt,ipaddress) VALUES(${userid},'{attempt}','{ipaddress}')";
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
 
     }

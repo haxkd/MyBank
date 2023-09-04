@@ -16,29 +16,31 @@ namespace MyBank
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string userIpAddress = HttpContext.Current.Request.UserHostAddress;
+
         }
 
         protected void btn_Click(object sender, EventArgs e)
         {
-            
-
             var em = email.Value;
             var ps = password.Value;
             DataTable table = UserLogic.checkCustomer(em);
+            string userIpAddress = Request.UserHostAddress;
 
-            new SendMails().loginMail(em,"address");
-
-            if (table.Rows.Count!=0)
+            if (table.Rows.Count != 0)
             {
+                string userid = table.Rows[0]["id"].ToString();
                 string pass = table.Rows[0]["password"].ToString();
                 if (pass == ps)
                 {
-                    Session["UserId"] = table.Rows[0]["id"].ToString();
+                    new SendMails().loginMail(em, userIpAddress, "success");
+                    UserLogic.addloginRecord(userid, "success", userIpAddress);
+                    Session["UserId"] = userid;
                     Response.Redirect("Dashboard.aspx");
                 }
                 else
                 {
+                    UserLogic.addloginRecord(userid, "failed", userIpAddress);
+                    new SendMails().loginMail(em, userIpAddress, "failed");
                     Response.Write("<script>alert('Invalid Password....!')</script>");
                 }
             }
