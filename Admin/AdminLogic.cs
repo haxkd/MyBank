@@ -51,10 +51,10 @@ namespace MyBank.Admin
             return dt;
         }
 
-        public static int addManager(string name, string branchid)
+        public static int addManager(string name, string branchid,string email,string password)
         {
             connection.Open();
-            string query = $"INSERT INTO Manager(name,branchid) VALUES ('{name}','{branchid}') ";
+            string query = $"INSERT INTO Manager(name,branchid,email,password) VALUES ('{name}','{branchid}','{email}','{password}') ";
             SqlCommand cmd = new SqlCommand(query, connection);
             var x = cmd.ExecuteNonQuery();
             connection.Close();

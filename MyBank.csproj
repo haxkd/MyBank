@@ -77,7 +77,10 @@
     <Content Include="Default.aspx" />
     <Content Include="Deposite.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Manager\Dashboard.aspx" />
+    <Content Include="Manager\Login.aspx" />
     <Content Include="MyMail\login.html" />
+    <Content Include="MyMail\Manager.html" />
     <Content Include="MyMail\Register copy.html" />
     <Content Include="MyMail\Register.html" />
     <Content Include="Register.aspx" />
@@ -165,6 +168,28 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Manager\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Manager.Master.cs">
+      <DependentUpon>Manager.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Manager.Master.designer.cs">
+      <DependentUpon>Manager.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ManagerLogic.cs" />
     <Compile Include="MyMail\SendMails.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -208,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Admin.Master" />
+    <Content Include="Manager\Manager.Master" />
     <None Include="packages.config" />
     <Content Include="User.Master" />
     <None Include="Web.Debug.config">

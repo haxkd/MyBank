@@ -78,5 +78,35 @@ namespace MyBank.MyMail
             }
         }
 
+    
+        public void newManager(string email,string password,string name)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/MyMail/Manager.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+
+            body = body.Replace("{email}", email);
+            body = body.Replace("{name}", name);
+            body = body.Replace("{password}", password);
+
+            using (MailMessage mail = new MailMessage())
+            {
+                mail.From = new MailAddress(MailEmail);
+                mail.To.Add(email);
+                mail.Subject = "My Bank new Manager";
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+                //mail.Attachments.Add(new Attachment("D:\\TestFile.txt"));//--Uncomment this to send any attachment  
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.Credentials = new NetworkCredential(MailEmail, MailPassword);
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+            }
+        }
+    
     }
 }
