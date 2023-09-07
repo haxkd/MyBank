@@ -26,7 +26,7 @@ namespace MyBank.Manager
 
         public static DataTable getCustomersofManager(string ManagerId)
         {
-            string query = $"select Customer.name as name,status from Customer join Manager on Manager.branchid=Customer.branchid where Manager.id='{ManagerId}'";
+            string query = $"select Customer.id as id, Customer.name as name, status from Customer join Manager on Manager.branchid=Customer.branchid where Manager.id='{ManagerId}'";
             connection.Open();
             SqlDataAdapter dr = new SqlDataAdapter(query, connection);
             DataTable table = new DataTable();
@@ -34,5 +34,18 @@ namespace MyBank.Manager
             connection.Close();
             return table;
         }
+
+        public static void updateCutsomerStatus(string id,string status)
+        {
+            if(status== "--select status--")
+            {
+                return;
+            }
+            string query = $"UPDATE Customer SET status='{status}' WHERE id='{id}'";
+            connection.Open();
+            new SqlCommand(query,connection).ExecuteNonQuery();
+            connection.Close();
+        }
+
     }
 }
