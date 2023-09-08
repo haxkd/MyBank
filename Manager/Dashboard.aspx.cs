@@ -48,8 +48,6 @@ namespace MyBank.Manager
                 table.Rows.Add(row);
                 srno++;
             }
-
-
             customers.DataSource = table;
             customers.DataBind();
         }
@@ -71,7 +69,6 @@ namespace MyBank.Manager
             {
                 l.Selected = true;
             }
-
         }
 
         protected void customers_RowUpdating(object sender, GridViewUpdateEventArgs e)

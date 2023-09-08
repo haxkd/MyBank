@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace MyBank
@@ -17,6 +18,19 @@ namespace MyBank
             {
                 Response.Redirect("login.aspx");
             }
+
+            string status = UserLogic.getCutsomer(Session["UserId"].ToString()).Rows[0]["status"].ToString();
+
+            if (status == "freeze")
+            {
+                Response.Write("<script>alert('account is freeze, cant transfer amount....!')</script>");
+
+                HtmlMeta meta = new HtmlMeta();
+                meta.HttpEquiv = "Refresh";
+                meta.Content = "0;url=Dashboard.aspx";
+                this.Page.Controls.Add(meta);
+            }
+
         }
 
         protected void btn_Click(object sender, EventArgs e)
@@ -42,6 +56,7 @@ namespace MyBank
             int transferAmount = int.Parse(amount.Value);
 
             DataRow user = UserLogic.getCutsomer(UserId).Rows[0];
+
 
             int fromBalance = int.Parse(user["balance"].ToString());
             int minAmount = int.Parse(user["minAmount"].ToString());

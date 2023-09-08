@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace MyBank
@@ -12,13 +13,22 @@ namespace MyBank
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
-            }
             if (Session["UserId"] == null)
             {
                 Response.Redirect("login.aspx");
+            }
+            if (!IsPostBack)
+            {
+                string status = UserLogic.getCutsomer(Session["UserId"].ToString()).Rows[0]["status"].ToString();
+                if (status == "freeze")
+                {
+                    Response.Write("<script>alert('account is freeze, cant withdraw amount....!')</script>");
+                    
+                    HtmlMeta meta = new HtmlMeta();
+                    meta.HttpEquiv = "Refresh";
+                    meta.Content = "0;url=Dashboard.aspx";
+                    this.Page.Controls.Add(meta);
+                }
             }
         }
 

@@ -30,12 +30,23 @@ namespace MyBank
             {
                 string userid = table.Rows[0]["id"].ToString();
                 string pass = table.Rows[0]["password"].ToString();
+                string status = table.Rows[0]["status"].ToString();
                 if (pass == ps)
                 {
-                    new SendMails().loginMail(em, userIpAddress, "success");
-                    UserLogic.addloginRecord(userid, "success", userIpAddress);
-                    Session["UserId"] = userid;
-                    Response.Redirect("Dashboard.aspx");
+
+                    if (status != "block")
+                    {
+                        new SendMails().loginMail(em, userIpAddress, "success");
+                        UserLogic.addloginRecord(userid, "success", userIpAddress);
+                        Session["UserId"] = userid;
+                        Response.Redirect("Dashboard.aspx");
+                    }
+                    else
+                    {
+                        UserLogic.addloginRecord(userid, "block", userIpAddress);
+                        new SendMails().loginMail(em, userIpAddress, "block");
+                        Response.Write("<script>alert('Account is blocked....!')</script>");
+                    }
                 }
                 else
                 {
