@@ -28,14 +28,21 @@ namespace MyBank
 
             if (table.Rows.Count != 0)
             {
+                //
                 string userid = table.Rows[0]["id"].ToString();
                 string pass = table.Rows[0]["password"].ToString();
                 string status = table.Rows[0]["status"].ToString();
+                int attempt = (int)table.Rows[0]["attempt"];
+                if (attempt == 3)
+                {
+                    Response.Write("<script>alert('Account is locked reset your password....!')</script>");
+                    return;
+                }
                 if (pass == ps)
                 {
-
                     if (status != "block")
                     {
+                        UserLogic.changeAttempt(0, userid);
                         new SendMails().loginMail(em, userIpAddress, "success");
                         UserLogic.addloginRecord(userid, "success", userIpAddress);
                         Session["UserId"] = userid;
@@ -45,14 +52,26 @@ namespace MyBank
                     {
                         UserLogic.addloginRecord(userid, "block", userIpAddress);
                         new SendMails().loginMail(em, userIpAddress, "block");
-                        Response.Write("<script>alert('Account is blocked....!')</script>");
+                        Response.Write("<script>alert('Account is blocked contact manager....!')</script>");
                     }
                 }
                 else
                 {
-                    UserLogic.addloginRecord(userid, "failed", userIpAddress);
-                    new SendMails().loginMail(em, userIpAddress, "failed");
-                    Response.Write("<script>alert('Invalid Password....!')</script>");
+                    attempt++;
+                    
+                    UserLogic.changeAttempt(attempt, userid);
+                    if(attempt == 3)
+                    {
+                        UserLogic.addloginRecord(userid, "Locked", userIpAddress);
+                        new SendMails().loginMail(em, userIpAddress, "locked");
+                        Response.Write("<script>alert('Invalid Password account locked....!')</script>");
+                    }
+                    else
+                    {
+                        UserLogic.addloginRecord(userid, "failed", userIpAddress);
+                        new SendMails().loginMail(em, userIpAddress, "failed");
+                        Response.Write("<script>alert('Invalid Password....!')</script>");
+                    }
                 }
             }
             else
