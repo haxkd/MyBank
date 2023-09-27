@@ -13,7 +13,6 @@ namespace MyBank
         {
             if (!IsPostBack)
             {
-
             }
             if (Session["UserId"] == null)
             {
