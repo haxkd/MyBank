@@ -28,7 +28,7 @@ namespace MyBank
 
             if (table.Rows.Count != 0)
             {
-                //
+                
                 string userid = table.Rows[0]["id"].ToString();
                 string pass = table.Rows[0]["password"].ToString();
                 string status = table.Rows[0]["status"].ToString();
