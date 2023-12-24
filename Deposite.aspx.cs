@@ -13,8 +13,7 @@ namespace MyBank
     public partial class Deposite : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        { 
             if (Session["UserId"] == null)
             {
                 Response.Redirect("login.aspx");
@@ -32,7 +31,6 @@ namespace MyBank
                     this.Page.Controls.Add(meta);
                 }
             }
-
         }
 
         protected void btn_Click(object sender, EventArgs e)
@@ -44,11 +42,8 @@ namespace MyBank
                 return;
             }
             int oldAmount = int.Parse(UserLogic.getCutsomer(Session["UserId"].ToString()).Rows[0]["balance"].ToString());
-
             int newAmount = Amount + oldAmount;
-
             string id = Session["UserId"].ToString();
-
             int x = UserLogic.depositeAmount(Amount,newAmount,id);
             if (x>-1)
             {
