@@ -12,8 +12,7 @@ namespace MyBank
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-            }
+            {}
             if (Session["UserId"] == null)
             {
                 Response.Redirect("login.aspx");
