@@ -16,7 +16,6 @@ namespace MyBank
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btn_Click(object sender, EventArgs e)
@@ -25,7 +24,6 @@ namespace MyBank
             var ps = password.Value;
             DataTable table = UserLogic.checkCustomer(em);
             string userIpAddress = Request.UserHostAddress;
-
             if (table.Rows.Count != 0)
             {
                 
