@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace MyBank
 {
     public partial class Transactions : System.Web.UI.Page
