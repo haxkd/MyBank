@@ -18,9 +18,7 @@ namespace MyBank
             {
                 Response.Redirect("login.aspx");
             }
-
             string status = UserLogic.getCutsomer(Session["UserId"].ToString()).Rows[0]["status"].ToString();
-
             if (status == "freeze")
             {
                 Response.Write("<script>alert('account is freeze, cant transfer amount....!')</script>");
